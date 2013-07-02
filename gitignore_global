@@ -1,0 +1,7 @@
+*~
+.DS_Store
+.*.swp
+*.local
+*.local.symlink
+*.bak
+.netrwhist
