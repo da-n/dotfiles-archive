@@ -60,7 +60,7 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
-" backup to ~/.tmp 
+" backup to ~/.vim-tmp 
 set backup 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
@@ -71,3 +71,9 @@ set writebackup
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" Enable mouse use in all modes
+set mouse=a
+
+" Set this to the name of your terminal that supports mouse codes.
+" Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
+set ttymouse=xterm2
