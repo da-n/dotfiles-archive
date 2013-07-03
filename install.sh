@@ -6,31 +6,39 @@
 
 ########## Variables
 
-dir=$HOME/dotfiles                    # dotfiles directory
-olddir=$HOME/dotfiles_old             # old dotfiles backup directory
-files="oh-my-zsh hushlogin vim aliases gitignore_global gvimrc todo.cfg vimrc zprofile zshrc"    # list of files/folders to symlink in homedir
+DATE=$(date +"%Y%m%d%H%M%S")
+OK="\033[0;32m...done\033[39m"
+DIR=$HOME/dotfiles                    # dotfiles directory
+DIR_BAK=$HOME/.dotfiles.bak             # old dotfiles backup directory
+FILES="hushlogin aliases gitignore_global gvimrc todo.cfg vimrc zprofile zshrc oh-my-zsh vim"    # list of files/folders to symlink in homedir
+
 
 ##########
 
 # Fetch any git submodules
-echo "Fetching git submodules"
+echo "Check/fetch git submodules"
 git submodule update --init
-echo "...done"
+echo $OK
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
+echo "Create backup directory \033[1;34m$DIR_BAK/$DATE\033[39m"
+mkdir -p $DIR_BAK
+mkdir -p $DIR_BAK/$DATE
+echo $OK
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
+cd $DIR
+
+# move any existing dotfiles in homedir to dotfiles_old directory
+echo "Move existing dotfiles to backup folder \033[1;34m$DIR_BAK/$DATE\033[39m"
+for FILE in $FILES; do
+    mv $HOME/.$FILE $DIR_BAK/$DATE
+done
+echo $OK
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv $HOME/.$file $HOME/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file $HOME/.$file
+echo "Add new dotfile symlinks to home directory \033[1;34m$HOME\033[39m"
+for FILE in $FILES; do
+    ln -s $DIR/$FILE $HOME/.$FILE
 done
+echo $OK
