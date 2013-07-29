@@ -11,4 +11,4 @@ plugins=(git ruby sublime)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zprofile
 source $HOME/.aliases
-source $HOME/.aliases_local
+source $HOME/.aliases.local
