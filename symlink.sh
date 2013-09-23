@@ -42,7 +42,7 @@ for FILE in $FILES; do
 done
 echo $OK
 
-echo ""
-echo "!! Remember to change default shell to Zsh: !!"
-echo "sudo chsh -s $(which zsh) $USER"
-echo ""
+echo "To check if you are using Zsh:"
+echo "$ echo $SHELL"
+echo "To change your shell:"
+echo "$ sudo chsh -s $(which zsh) $USER"

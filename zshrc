@@ -8,14 +8,14 @@ ZSH_THEME="gianu"
 plugins=(git)
 
 # Aliases
-if [ ! -f $ZSH/oh-my-zsh.sh ]; then
+if [ -f $ZSH/oh-my-zsh.sh ]; then
   source $ZSH/oh-my-zsh.sh
 fi
 
-if [ ! -f $HOME/.zprofile ]; then
+if [ -f $HOME/.zprofile ]; then
   source $HOME/.zprofile
 fi
 
-if [ ! -f $HOME/.aliases.local ]; then
+if [ -f $HOME/.aliases.local ]; then
   source $HOME/.aliases.local
 fi
