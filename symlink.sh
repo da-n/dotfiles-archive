@@ -8,7 +8,7 @@
 
 DATE=$(date +"%Y%m%d%H%M%S")
 OK="\033[0;32m...done\033[39m"
-DIR=$HOME/dotfiles                    # dotfiles directory
+DIR=$HOME/.dotfiles                    # dotfiles directory
 DIR_BAK=$HOME/.dotfiles.bak             # old dotfiles backup directory
 FILES="hushlogin aliases gitignore_global gvimrc todo.cfg vimrc zprofile zshrc oh-my-zsh vim"    # list of files/folders to symlink in homedir
 
