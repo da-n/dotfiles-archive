@@ -12,7 +12,6 @@ DIR=$HOME/.dotfiles                    # dotfiles directory
 DIR_BAK=$HOME/.dotfiles.bak             # old dotfiles backup directory
 FILES="aliases gitignore_global gvimrc todo.cfg vimrc zprofile zshrc oh-my-zsh vim"    # list of files/folders to symlink in homedir
 
-
 ##########
 
 # Fetch any git submodules
@@ -43,5 +42,7 @@ for FILE in $FILES; do
 done
 echo $OK
 
-echo "Change your default shell to Zsh by issuing the following command:"
-echo "chsh -s $(which zsh)"
+echo ""
+echo "!! Remember to change default shell to Zsh: !!"
+echo "sudo chsh -s $(which zsh) $USER"
+echo ""
