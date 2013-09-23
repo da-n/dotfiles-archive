@@ -42,3 +42,6 @@ for FILE in $FILES; do
     ln -s $DIR/$FILE $HOME/.$FILE
 done
 echo $OK
+
+echo "Change your default shell to Zsh by issuing the following command:"
+echo "chsh -s $(which zsh)"
