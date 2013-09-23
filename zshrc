@@ -1,8 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom"
 
 # Theme
-ZSH_THEME="gianu"
+ZSH_THEME="da-n"
 
 # Plugins
 plugins=(git)
