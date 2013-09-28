@@ -40,5 +40,9 @@ for FILE in $FILES; do
 done
 echo $OK
 
+# Symlink fonts
+ln -s $HOME/.dotfiles/fonts $HOME/.fonts/fonts 
+
+# Warn user to change shell
 echo "To change your shell:"
 echo "$ sudo chsh -s $(which zsh) $USER"
