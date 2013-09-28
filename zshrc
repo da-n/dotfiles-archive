@@ -20,3 +20,5 @@ fi
 if [ -f $HOME/.aliases.local ]; then
   source $HOME/.aliases.local
 fi
+
+export TERM=xterm-256color
