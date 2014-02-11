@@ -1,33 +1,42 @@
-# Check the OS type
-# Adapted from Nicolas Martyanoff's answer at
-# http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
-platform='unknown'
-unamestr=`uname`
+# # Add `~/bin` to the `$PATH`
+# export PATH="$HOME/bin:$PATH"
 
-if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='darwin'
-fi
+# # Check the OS type
+# # Adapted from Nicolas Martyanoff's answer at
+# # http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
+# platform='unknown'
+# unamestr=`uname`
 
-# Linux platform specfic
-if [[ $platform == 'linux' ]]; then
+# if [[ "$unamestr" == 'Linux' ]]; then
+#    platform='linux'
+# elif [[ "$unamestr" == 'Darwin' ]]; then
+#    platform='darwin'
+# fi
 
-   # alias ls='ls --color=auto'
+# # Linux specfic
+# if [[ $platform == 'linux' ]]; then
+#   alias ls='ls --color=auto'
+# fi
 
-# OS X platform specfic
-elif [[ $platform == 'darwin' ]]; then
+# # OS X specfic
+# if [[ $platform == 'darwin' ]]; then
+#   # # PATH like a bawss
+#   #       PATH=/opt/local/bin
+#   # PATH=$PATH:/opt/local/sbin
+#   # PATH=$PATH:/bin
+#   # PATH=$PATH:~/.rvm/bin
+#   # PATH=$PATH:~/code/git-friendly
 
-  # To use Homebrew's directories rather than ~/.rbenv add to your profile
-  export RBENV_ROOT=/usr/local/var/rbenv
-  # To enable shims and autocompletion add to your profile
-  #export RBENV_ROOT="${HOME}/.rbenv"
-  if [ -d "${RBENV_ROOT}" ]; then
-    export PATH="${RBENV_ROOT}/bin:${PATH}"
-    eval "$(rbenv init -)"
-  fi
-
-fi
+#   # # To use Homebrew's directories rather than ~/.rbenv add to your profile
+#   # export RBENV_ROOT=/usr/local/var/rbenv
+#   # # To enable shims and autocompletion add to your profile
+#   # #export RBENV_ROOT="${HOME}/.rbenv"
+#   # if [ -d "${RBENV_ROOT}" ]; then
+#   #   export PATH="${RBENV_ROOT}/bin:${PATH}"
+#   #   eval "$(rbenv init -)"
+#   # fi
+#   export PATH
+# fi
 
 # Color for manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
