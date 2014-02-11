@@ -21,4 +21,6 @@ if [ -f $HOME/.aliases.local ]; then
   source $HOME/.aliases.local
 fi
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
