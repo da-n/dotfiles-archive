@@ -9,7 +9,7 @@ DATE=$(date +"%Y%m%d%H%M%S")
 OK="\033[0;32m...done\033[39m"
 DIR=$HOME/.dotfiles                    # dotfiles directory
 DIR_BAK=$HOME/.dotfiles.bak             # old dotfiles backup directory
-FILES="aliases gitignore_global zprofile zshrc oh-my-zsh tmux.conf"    # list of files/folders to symlink in homedir
+FILES="aliases.local bash_aliases bash_profile bashrc gitconfig gitignore_global tmux.conf"    # list of files/folders to symlink in homedir
 ##########
 
 # Fetch any git submodules
@@ -41,8 +41,8 @@ done
 echo $OK
 
 # Symlink fonts
-ln -s $HOME/.dotfiles/fonts $HOME/.fonts/fonts 
+# ln -s $HOME/.dotfiles/fonts $HOME/.fonts/fonts
 
 # Warn user to change shell
-echo "To change your shell:"
-echo "$ sudo chsh -s $(which zsh) $USER"
+echo "To change your shell run the following command (may require root)"
+echo "chsh -s $(which bash) $USER"
