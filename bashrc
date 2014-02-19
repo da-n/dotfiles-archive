@@ -1,9 +1,6 @@
-# # Add `~/bin` to the `$PATH`
-# export PATH="$HOME/bin:$PATH"
-
-# # Check the OS type
-# # Adapted from Nicolas Martyanoff's answer at
-# # http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
+# Check the OS type
+# Adapted from Nicolas Martyanoff's answer at
+# http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
 platform='unknown'
 unamestr=`uname`
 
@@ -22,12 +19,16 @@ fi
 if [[ $platform == 'darwin' ]]; then
   # Git completion when using homebrew
   if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
   fi
 
   if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
-      . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
+
+  PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
 # Color for manpages
