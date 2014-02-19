@@ -1,8 +1,0 @@
-[submodule "vim/bundle/Command-T"]
-	path = vim/bundle/Command-T
-	url = git://github.com/wincent/Command-T.git
-    ignore = dirty
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-    url = git://github.com/scrooloose/nerdtree.git
-    ignore = dirty
