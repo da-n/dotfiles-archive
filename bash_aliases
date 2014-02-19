@@ -39,8 +39,3 @@ fi
 if [ -f ~/.aliases.local ]; then
   . ~/.aliases.local
 fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-

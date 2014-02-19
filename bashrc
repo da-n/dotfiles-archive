@@ -4,39 +4,31 @@
 # # Check the OS type
 # # Adapted from Nicolas Martyanoff's answer at
 # # http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
-# platform='unknown'
-# unamestr=`uname`
+platform='unknown'
+unamestr=`uname`
 
-# if [[ "$unamestr" == 'Linux' ]]; then
-#    platform='linux'
-# elif [[ "$unamestr" == 'Darwin' ]]; then
-#    platform='darwin'
-# fi
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='darwin'
+fi
 
-# # Linux specfic
-# if [[ $platform == 'linux' ]]; then
-#   alias ls='ls --color=auto'
-# fi
+# Linux specfic
+if [[ $platform == 'linux' ]]; then
+  alias ls='ls --color=auto'
+fi
 
-# # OS X specfic
-# if [[ $platform == 'darwin' ]]; then
-#   # # PATH like a bawss
-#   #       PATH=/opt/local/bin
-#   # PATH=$PATH:/opt/local/sbin
-#   # PATH=$PATH:/bin
-#   # PATH=$PATH:~/.rvm/bin
-#   # PATH=$PATH:~/code/git-friendly
+# OS X specfic
+if [[ $platform == 'darwin' ]]; then
+  # Git completion when using homebrew
+  if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+  fi
 
-#   # # To use Homebrew's directories rather than ~/.rbenv add to your profile
-#   # export RBENV_ROOT=/usr/local/var/rbenv
-#   # # To enable shims and autocompletion add to your profile
-#   # #export RBENV_ROOT="${HOME}/.rbenv"
-#   # if [ -d "${RBENV_ROOT}" ]; then
-#   #   export PATH="${RBENV_ROOT}/bin:${PATH}"
-#   #   eval "$(rbenv init -)"
-#   # fi
-#   export PATH
-# fi
+  if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+      . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+  fi
+fi
 
 # Color for manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -134,6 +126,13 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -141,11 +140,4 @@ fi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
 fi
