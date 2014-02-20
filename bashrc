@@ -26,6 +26,9 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
+  export CLICOLOR=1
+  export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
   PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
 
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
