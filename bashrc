@@ -17,7 +17,8 @@ fi
 
 # OS X specfic
 if [[ $platform == 'darwin' ]]; then
-  # Git completion when using homebrew
+
+  # Git completion
   if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
   fi
@@ -26,11 +27,24 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
+  # Add colour to ls
   export CLICOLOR=1
   export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-  PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+  # Load local bin fallback
+  export PATH="/usr/local/bin:$PATH"
+  # Load gnu utils
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+  # Load local ruby
+  export PATH="$HOME/.rvm/bin:$PATH"
+  # Load node
+  export PATH="$HOME/local/node/bin:$PATH"
+  # Load npm
+  export PATH="/usr/local/share/npm/bin:$PATH"
+  # Load sbin
+  export PATH="/usr/local/sbin:$PATH"
 
+  # Use gnu utils manpages
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
@@ -141,7 +155,11 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# Local definitions.
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
 fi
