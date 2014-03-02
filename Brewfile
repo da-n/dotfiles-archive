@@ -19,8 +19,6 @@ install wget --enable-iri
 install vim --override-system-vi
 tap homebrew/dupes
 install homebrew/dupes/grep
-tap josegonzalez/homebrew-php
-install php55
 
 # Install other useful binaries
 install encfs
@@ -39,6 +37,7 @@ install pigz
 install rename
 install tree
 install webkit2png
+install htop-osx
 
 tap homebrew/versions
 
