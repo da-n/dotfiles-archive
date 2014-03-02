@@ -10,6 +10,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='darwin'
 fi
 
+alias ls="ls --color=auto"
+
 # Linux specfic
 if [[ $platform == 'linux' ]]; then
   alias ls='ls --color=auto'
