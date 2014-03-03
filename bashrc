@@ -29,6 +29,10 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
+  if test -f ~/.rvm/scripts/rvm; then
+    [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
+  fi
+
   # Add colour to ls
   export CLICOLOR=1
   export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
