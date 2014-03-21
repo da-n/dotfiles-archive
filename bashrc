@@ -29,9 +29,11 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
-  if test -f ~/.rvm/scripts/rvm; then
-    [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
-  fi
+  source ~/.rvm/scripts/rvm
+
+  #if test -f ~/.rvm/scripts/rvm; then
+  #  [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
+  #fi
 
   # Add colour to ls
   export CLICOLOR=1
@@ -43,6 +45,8 @@ if [[ $platform == 'darwin' ]]; then
   export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
   # Load local ruby
   export PATH="$HOME/.rvm/bin:$PATH"
+  # Load local rvm
+  export PATH="$HOME/.rvm/scripts/rvm:$PATH"
   # Load node
   export PATH="$HOME/local/node/bin:$PATH"
   # Load npm

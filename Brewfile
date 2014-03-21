@@ -24,7 +24,7 @@ install homebrew/dupes/grep
 install encfs
 install openssl
 install tmux
-install gcc46
+#install gcc46
 install libyaml
 install readline
 install speedtest_cli
