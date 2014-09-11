@@ -285,19 +285,19 @@ Host="\h"
 
 if [ -n "$SSH_CLIENT" ]; then
     # connecting via ssh, use red coloured prompt
-    export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
+    export PS1=$On_IRed"[remote]"$Color_Off" "$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
     if [ $? -eq 0 ]; then \
       echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
       if [ "$?" -eq "0" ]; then \
         # @4 - Clean repository - nothing to commit
-        echo "'$IYellow'"$(__git_ps1 " (%s)"); \
+        echo "'$BIGreen'"$(__git_ps1 " (%s)"); \
       else \
         # @5 - Changes to working tree
-        echo "'$IRed'"$(__git_ps1 " {%s}"); \
-      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IRed" [remote]"$Color_Off' $ "; \
+        echo "'$BIRed'"$(__git_ps1 " {%s}"); \
+      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
     else \
       # @2 - Prompt when not in GIT repo
-      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IRed" [remote]"$Color_Off' $ "; \
+      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
     fi)'
 else
     # local coloured prompt
@@ -306,14 +306,14 @@ else
       echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
       if [ "$?" -eq "0" ]; then \
         # @4 - Clean repository - nothing to commit
-        echo "'$IYellow'"$(__git_ps1 " (%s)"); \
+        echo "'$BIGreen'"$(__git_ps1 " (%s)"); \
       else \
         # @5 - Changes to working tree
-        echo "'$IRed'"$(__git_ps1 " {%s}"); \
-      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IBlack" [local]"$Color_Off' $ "; \
+        echo "'$BIRed'"$(__git_ps1 " {%s}"); \
+      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
     else \
       # @2 - Prompt when not in GIT repo
-      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IBlack" [local]"$Color_Off' $ "; \
+      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
     fi)'
 fi
 
