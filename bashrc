@@ -106,6 +106,15 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+#RCol='\[\e[0m\]'    # Text Reset
+#Red='\[\e[0;31m\]'  # Red
+#Gre='\[\e[0;32m\]'  # Green
+#Yel='\[\e[0;33m\]'  # Yellow
+#Blu='\[\e[0;34m\]'  # Blue
+#Pur='\[\e[0;35m\]'  # Purple
+#Cya='\[\e[0;36m\]'  # Cyan
+#Whi='\[\e[0;37m\]'  # White
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -121,6 +130,7 @@ if [ -n "$force_color_prompt" ]; then
     color_prompt=
     fi
 fi
+
 
 # check if we are local or remote via ssh. if remote, use red colours.
 if [ -n "$SSH_CLIENT" ]; then
@@ -264,20 +274,47 @@ Jobs="\j"
 Username="\u"
 Host="\h"
 
+# if [ $UID -eq "0" ];then
+#     PS1="${Red}\h \W ->${RCol} "        # Set prompt for root
+# else
+#     PS1="\h \W -> "
+# fi
+
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
-export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [ "$?" -eq "0" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
-fi)'
+if [ -n "$SSH_CLIENT" ]; then
+    # connecting via ssh, use red coloured prompt
+    export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
+    if [ $? -eq 0 ]; then \
+      echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+      if [ "$?" -eq "0" ]; then \
+        # @4 - Clean repository - nothing to commit
+        echo "'$IWhite'"$(__git_ps1 " (%s)"); \
+      else \
+        # @5 - Changes to working tree
+        echo "'$IRed'"$(__git_ps1 " {%s}"); \
+      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IRed" [remote]"$Color_Off' $ "; \
+    else \
+      # @2 - Prompt when not in GIT repo
+      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IRed" [remote]"$Color_Off' $ "; \
+    fi)'
+else
+    # local coloured prompt
+    export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
+    if [ $? -eq 0 ]; then \
+      echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+      if [ "$?" -eq "0" ]; then \
+        # @4 - Clean repository - nothing to commit
+        echo "'$IWhite'"$(__git_ps1 " (%s)"); \
+      else \
+        # @5 - Changes to working tree
+        echo "'$IRed'"$(__git_ps1 " {%s}"); \
+      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IBlack" [local]"$Color_Off' $ "; \
+    else \
+      # @2 - Prompt when not in GIT repo
+      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host$IBlack" [local]"$Color_Off' $ "; \
+    fi)'
+fi
+
+
