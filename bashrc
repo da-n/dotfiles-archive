@@ -285,7 +285,7 @@ Host="\h"
 
 if [ -n "$SSH_CLIENT" ]; then
     # connecting via ssh, use red coloured prompt
-    export PS1=$On_IRed"[remote]"$Color_Off" "$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
+    export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
     if [ $? -eq 0 ]; then \
       echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
       if [ "$?" -eq "0" ]; then \
@@ -294,10 +294,10 @@ if [ -n "$SSH_CLIENT" ]; then
       else \
         # @5 - Changes to working tree
         echo "'$BIRed'"$(__git_ps1 " {%s}"); \
-      fi) '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
+      fi) '$BWhite$PathShort$Color_Off' \n'$On_IRed" SSH "$Color_Off" "$Username@$Host' $ "; \
     else \
       # @2 - Prompt when not in GIT repo
-      echo " '$BWhite$PathShort$Color_Off' \n'$Username@$Host' $ "; \
+      echo " '$BWhite$PathShort$Color_Off' \n'$On_IRed" SSH "$Color_Off" "$Username@$Host' $ "; \
     fi)'
 else
     # local coloured prompt
