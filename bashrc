@@ -10,12 +10,12 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='darwin'
 fi
 
-alias ls="ls --color=auto"
+#alias ls="ls --color=auto"
 
 # Linux specfic
-if [[ $platform == 'linux' ]]; then
-  alias ls='ls --color=auto'
-fi
+#if [[ $platform == 'linux' ]]; then
+  #alias ls='ls --color=auto'
+#fi
 
 # OS X specfic
 if [[ $platform == 'darwin' ]]; then
@@ -160,9 +160,9 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
+#if [ -x /usr/bin/dircolors ]; then
+    #test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
