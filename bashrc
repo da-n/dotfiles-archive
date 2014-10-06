@@ -29,7 +29,7 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
-  source ~/.rvm/scripts/rvm
+  #source ~/.rvm/scripts/rvm
 
   #if test -f ~/.rvm/scripts/rvm; then
   #  [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
