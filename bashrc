@@ -10,12 +10,12 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='darwin'
 fi
 
-alias ls="ls --color=auto"
+#alias ls="ls --color=auto"
 
 # Linux specfic
-if [[ $platform == 'linux' ]]; then
-  alias ls='ls --color=auto'
-fi
+#if [[ $platform == 'linux' ]]; then
+  #alias ls='ls --color=auto'
+#fi
 
 # OS X specfic
 if [[ $platform == 'darwin' ]]; then
@@ -29,7 +29,7 @@ if [[ $platform == 'darwin' ]]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
-  source ~/.rvm/scripts/rvm
+  #source ~/.rvm/scripts/rvm
 
   #if test -f ~/.rvm/scripts/rvm; then
   #  [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
@@ -163,9 +163,9 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
+#if [ -x /usr/bin/dircolors ]; then
+    #test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

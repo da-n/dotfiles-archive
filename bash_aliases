@@ -14,20 +14,16 @@ up(){
 }
 
 # commonly used variations of ls (and typos)
-alias ll="ls -l"
-alias lo="ls -o"
-alias lh="ls -lh"
-alias la="ls -la"
-alias sl="ls"
-alias l="ls"
-alias s="ls"
+alias ll="ls -lh"
+alias lo="ls -oh"
+alias la="ls -lah"
 
 # command line calculator
 calc(){ awk "BEGIN{ print $* }" ;}
 
 # handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
