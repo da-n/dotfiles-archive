@@ -58,6 +58,9 @@ if [[ $platform == 'darwin' ]]; then
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
+# Add cake bake to path
+export PATH="$PATH:/usr/share/cakephp/lib/Cake/Console"
+
 # Color for manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -182,6 +185,11 @@ fi
 # Local definitions.
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
+fi
+
+# Git bash completions
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
 fi
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
