@@ -9,7 +9,7 @@ DATE=$(date +"%Y%m%d%H%M%S")
 OK="\033[0;32m...done\033[39m"
 DIR=$HOME/.dotfiles                    # dotfiles directory
 DIR_BAK=$HOME/.dotfiles.bak             # old dotfiles backup directory
-FILES="aliases.local bash_aliases bash_profile bashrc gitignore_global tmux.conf"    # list of files/folders to symlink in homedir
+FILES="aliases.local git-completion.bash bash_aliases bash_profile bashrc gitignore_global tmux.conf"    # list of files/folders to symlink in homedir
 ##########
 
 # Fetch any git submodules
