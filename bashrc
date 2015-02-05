@@ -58,6 +58,8 @@ if [[ $platform == 'darwin' ]]; then
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 # Color for manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
